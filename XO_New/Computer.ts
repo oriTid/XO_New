@@ -98,9 +98,9 @@
 
                 if (findCount == MainBoard.board.length || findCount == 1) { //קבל תא רנדומלי מהשורה שנמצאה למעלה שאין בו ערך  ותחזיר את הקורדינאטות שלו
                     let fndCol: number = undefined;
-                    while (fndCol == undefined) { 
+                    while (fndCol == undefined) {
                         fndCol = this.random(0, gameMap[fndRow].length);
-                        if (gameMap[fndRow][fndCol].Sign != undefined) 
+                        if (gameMap[fndRow][fndCol].Sign != undefined)
                             fndCol = undefined;
                     }
 
@@ -109,7 +109,6 @@
 
                 if (coordinate != undefined)
                     break;
-
             }
         }
 
