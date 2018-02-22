@@ -70,7 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
-    <TypeScriptCompile Include="BoardPosition.ts" />
+    <TypeScriptCompile Include="BoardCoordinates.ts" />
     <TypeScriptCompile Include="MainBoard.ts" />
     <TypeScriptCompile Include="Computer.ts" />
     <TypeScriptCompile Include="Player.ts" />

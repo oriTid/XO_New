@@ -1,23 +1,23 @@
-var BoardPosition = /** @class */ (function () {
-    function BoardPosition(rowIDX, columnIDX) {
+var BoardCoordinates = /** @class */ (function () {
+    function BoardCoordinates(rowIDX, columnIDX) {
         this.row = rowIDX;
         this.column = columnIDX;
     }
-    Object.defineProperty(BoardPosition.prototype, "Row", {
+    Object.defineProperty(BoardCoordinates.prototype, "Row", {
         get: function () {
             return this.row;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(BoardPosition.prototype, "Column", {
+    Object.defineProperty(BoardCoordinates.prototype, "Column", {
         get: function () {
             return this.column;
         },
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(BoardPosition.prototype, "Sign", {
+    Object.defineProperty(BoardCoordinates.prototype, "Sign", {
         get: function () {
             return this.sign;
         },
@@ -27,6 +27,6 @@ var BoardPosition = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    return BoardPosition;
+    return BoardCoordinates;
 }());
-//# sourceMappingURL=BoardPosition.js.map
+//# sourceMappingURL=BoardCoordinates.js.map

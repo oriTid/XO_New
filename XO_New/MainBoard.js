@@ -8,20 +8,26 @@ var MainBoard = /** @class */ (function () {
             MainBoard.board[i] = new Array(x);
         }
     };
-    MainBoard.prototype.ShowExampleBoard = function () {
-        var mat = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8]
-        ];
+    MainBoard.prototype.ShowExampleBoard = function (x) {
+        //document.body.sty
+        var mat = new Array(x);
+        var counter = 0;
+        for (var z = 0; z < mat.length; z++) {
+            mat[z] = new Array(x);
+            for (var c = 0; c < mat[z].length; c++) {
+                mat[z][c] = counter;
+                counter++;
+            }
+        }
         var tempStr = "<br/>";
-        document.write("This are the coordinates numbers: <br/>");
+        document.write("This are the example coordinates numbers: <br/>");
         for (var i = 0; i < mat.length; i++) {
             for (var j = 0; j < mat[i].length; j++) {
-                tempStr += "&nbsp;" + mat[i][j] + "&nbsp;|";
+                tempStr += " &nbsp;" + mat[i][j] + " &nbsp;|";
             }
-            tempStr += "<br/>----------<br/>";
+            tempStr += "<br/>------------------<br/><br/>";
         }
+        document.write("</div>");
         document.write(tempStr + " <br/>");
     };
     MainBoard.GetCoordinates = function (position) {
@@ -35,7 +41,7 @@ var MainBoard = /** @class */ (function () {
                 c = 0;
             }
         }
-        coordinates = new BoardPosition(r, c);
+        coordinates = new BoardCoordinates(r, c);
         return coordinates;
     };
     MainBoard.prototype.newWIN = function (char, r, c) {
@@ -45,7 +51,7 @@ var MainBoard = /** @class */ (function () {
             if (!this.checkCell(char, i, c)) {
                 tempResult = false;
                 break;
-            }
+            } //ריצה על השורות
         }
         if (tempResult)
             return true; //  אז יש נצחוןTRUE במידה ולולאת בדיקת השורות בעמודה סיימה ב

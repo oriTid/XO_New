@@ -19,19 +19,25 @@ var Player = /** @class */ (function () {
     });
     //////////// Methods /////////////
     Player.prototype.playerInput = function () {
-        var position = undefined;
+        var position = undefined; //
+        var coordinates;
         while (position == undefined || isNaN(position)) {
-            var input = prompt(" " + this.plyrNme + ", please enter your next coordinate:");
+            var input = prompt(" " + this.plyrNme + ", please enter your next coordinate:"); //קליטת הפוזיציות מהשחקן
             position = parseInt(input);
             if (isNaN(position)) {
                 alert("Sorry, input must be a number\nPlease try again.");
             }
             if (position < 0 || position > MainBoard.board.length * MainBoard.board.length - 1) {
-                alert("Sorry, input must be a number between zero to eight (0-8)\nPlease try again.");
+                alert("Sorry, input must be a number between 0 to " + (MainBoard.board.length * MainBoard.board.length - 1) + "\nPlease try again.");
+                position = undefined;
+            }
+            coordinates = MainBoard.GetCoordinates(position);
+            if (MainBoard.board[coordinates.Row][coordinates.Column] != undefined) {
+                alert("This position is taken by " + MainBoard.board[coordinates.Row][coordinates.Column] + "\nPlease Try Again");
                 position = undefined;
             }
         }
-        return MainBoard.GetCoordinates(position);
+        return coordinates; //החזרה של קודינאטות מהפוזיציה
     };
     return Player;
 }());

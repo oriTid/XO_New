@@ -1,4 +1,4 @@
-﻿class BoardPosition {
+﻿class BoardCoordinates { //מחלקה ליצירת לקורדינאטות (מיקומים בלוח) על הלוח וסימן במידה ויש
 
     private row: number;
     private column: number;

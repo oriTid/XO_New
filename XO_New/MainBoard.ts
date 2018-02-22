@@ -7,32 +7,40 @@
     //////////Methods///////
 
 
-    public startNewGame(x: number): void {
+    public startNewGame(x: number): void { //  התחלת משחק - יצירה של לוח המשחק
         MainBoard.board = new Array(x);
         for (let i = 0; i < MainBoard.board.length; i++) {
             MainBoard.board[i] = new Array(x);           
         }
     }
 
-    public ShowExampleBoard(): void {
-        let mat: number[][] = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8]
-        ];
+    public ShowExampleBoard(x: number): void { // הצגת פוזיציות לדוגמא על המסך לפני שהמשחק התחיל
+        //document.body.sty
+        let mat: number[][] = new Array(x);
+        let counter: number = 0;
+        for (let z = 0; z < mat.length; z++) {
+            mat[z] = new Array(x);
+            for (let c = 0; c < mat[z].length; c++) {
+                mat[z][c] = counter;
+                counter++;
+            }
+
+        }
         let tempStr: string = "<br/>";
-        document.write(`This are the coordinates numbers: <br/>`)
+        
+        document.write(`This are the example coordinates numbers: <br/>`)
         for (let i: number = 0; i < mat.length; i++) {
             for (let j: number = 0; j < mat[i].length; j++) {
-                tempStr += "&nbsp;" + mat[i][j] + "&nbsp;|";
+                tempStr += " &nbsp;" + mat[i][j] + " &nbsp;|";
             }
-            tempStr += "<br/>----------<br/>";
+            tempStr += "<br/>------------------<br/><br/>";
         }
+        document.write("</div>");
         document.write(`${tempStr} <br/>`);
     }
 
-    public static GetCoordinates(position: number): BoardPosition {
-        let coordinates: BoardPosition;
+    public static GetCoordinates(position: number): BoardCoordinates { //קבל פוזיציות והחזר קורדינאטות
+        let coordinates: BoardCoordinates;
         let c: number=0;
         let r: number=0;
 
@@ -45,13 +53,13 @@
             }
         }
 
-        coordinates = new BoardPosition(r, c);
+        coordinates = new BoardCoordinates(r, c);
         return coordinates;
     }
 
 
-    public newWIN(char: string, r: number, c: number): boolean {
-        MainBoard.board[r][c] = char;
+    public newWIN(char: string, r: number, c: number): boolean { //    פונציית בדיקת הנצחון- מקבלת סימן וקורדינאטות ומחזירה בוליאני לנצחון כן/לא
+        MainBoard.board[r][c] = char
 
         let tempResult: boolean = true; //משתנה זכייה שידע לעצור באם יש זכייה 
 
@@ -59,14 +67,14 @@
             if (!this.checkCell(char, i, c)) {
                 tempResult = false;
                 break;
-            }
+            } //ריצה על השורות
         }
 
         if (tempResult) return true; //  אז יש נצחוןTRUE במידה ולולאת בדיקת השורות בעמודה סיימה ב
 
         tempResult = true;
-        for (let i: number = 0; i < MainBoard.board.length; i++) {
-            if (!this.checkCell(char, r, i)) { //  וצא מהלולאה של הבדיקה הנוכחיתALSE -אם יש סימן שונה/תא ריק באחד התאים בעמודה סמן את משתנה זכייה ל   
+        for (let i: number = 0; i < MainBoard.board.length; i++) {//  וצא מהלולאה של הבדיקה הנוכחיתALSE -אם יש סימן שונה/תא ריק באחד התאים בעמודה סמן את משתנה זכייה ל 
+            if (!this.checkCell(char, r, i)) {   //ריצה על העמודות
                 tempResult = false;
                 break;
             }
@@ -101,7 +109,7 @@
         return tempResult;
     }
 
-    private checkCell(char: string, r: number, c: number) { //  TRUE בדיקה אם התא מכיל את אותו תו. אם כן, מחזיר
+    private checkCell(char: string, r: number, c: number) { //  TRUE פונקציית בדיקה אם התא מכיל את אותו תו. אם כן, מחזיר
         if (MainBoard.board[r][c] == undefined) return false;
         if (MainBoard.board[r][c] != char) return false;
         return true;
